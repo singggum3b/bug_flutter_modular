@@ -7,10 +7,18 @@ class PageRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-          child: ElevatedButton(
-            onPressed: () { Modular.to.pushNamed("/nested"); },
-            child: Text("pushnamed /nested"),
-          ),
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () { Modular.to.pushNamed("/nested"); },
+                child: Text("pushnamed /nested"),
+              ),
+              ElevatedButton(
+                onPressed: () { Modular.to.navigate("/another/1"); },
+                child: Text("navigate /another/1"),
+              ),
+            ],
+          )
         )
     );
   }
@@ -22,11 +30,39 @@ class PageA extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          onPressed: () { Modular.to.navigate("../"); },
-          child: Text("navigate(../)"),
-        ),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () { Modular.to.navigate("../"); },
+              child: Text("navigate(../)"),
+            ),
+            ElevatedButton(
+              onPressed: () { Modular.to.navigate("/index"); },
+              child: Text("navigate /index"),
+            ),
+          ],
+        )
       )
+    );
+  }
+
+}
+
+class PageB extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () { Modular.to.navigate("/nested"); },
+                  child: Text("To /nested"),
+                ),
+              ],
+            )
+        )
     );
   }
 

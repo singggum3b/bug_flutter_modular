@@ -17,11 +17,20 @@ class NestedModule extends Module {
   ];
 }
 
+class AnotherModule extends Module {
+  // Provide all the routes for your module
+  @override
+  final List<ModularRoute> routes = [
+    ChildRoute("/:param", child: (_, __) => PageB()),
+  ];
+}
+
 class AppModule extends Module {
   // Provide all the routes for your module
   @override
   final List<ModularRoute> routes = [
-    ModuleRoute("/", module: RootModule()),
+    ModuleRoute("/index", module: RootModule()),
     ModuleRoute("/nested", module: NestedModule()),
+    ModuleRoute("/another", module: AnotherModule()),
   ];
 }
